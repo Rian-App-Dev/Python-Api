@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Order_Details(
         '''
 CREATE TABLE IF NOT EXISTS Sell_History(
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            sell_id VARCHAR(255).
+                            sell_id VARCHAR(255),
                             product_id VARCHAR(255),
                             quantity INT,
                             remaining_stock INT,
@@ -73,5 +73,16 @@ CREATE TABLE IF NOT EXISTS Sell_History(
 
 '''
     )
+#     cursor.execute(
+#         '''
+# CREATE TABLE IF NOT EXISTS Available_Products(
+#                             id INT PRIMARY KEY AUTOINCREMENT,
+#                             product_id VARCHAR(255),
+#                             product_name VARCHAR(255),
+#                             category VARCHAR(255),
+#                             price FLOAT,
+#                             )
+# '''
+#     )
     conn.commit()
     conn.close()

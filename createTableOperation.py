@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Products(
                             name VARCHAR(255),
                             price FLOAT,
                             category VARCHAR(255),
-                            stock INTEGER(255)
+                            stock INTEGER
                             )
 '''
     )

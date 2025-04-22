@@ -3,7 +3,7 @@ from createTableOperation import createTable
 from addOperation import createUser
 from authUser import authenticate_user
 from readOperations import getAllUsers, getSpacificUser
-from updateOperation import update_approve_user
+from updateOperation import update_approve_user, update_user_all_info
 
 app = Flask(__name__)
 
@@ -71,12 +71,20 @@ def approve_User():
     except Exception as error:
         return jsonify({"message": error, "status" : 400})
     
-# app.route("/updateAll", methods = ["PATCH"])
-# def update_all():
-#     try:
+@app.route("/updateAll", methods = ["PATCH"])
+def update_all():
+    try:
+        user_id = request.form['user_id']
+        upadteUser = {}
 
-#     except Exception as error:
-#         return jsonify({"message": error, "status" : 400})
+        for key, value in request.form.items():
+            if key != "user_id":
+                upadteUser[key] = value
+        update_user_all_info(upadteUser, user_id)
+        return jsonify({"status" : 200, 'message':'Update successful'})
+
+    except Exception as error:
+        return jsonify({"message": error, "status" : 400})
 
 if __name__=="__main__":
     createTable()

@@ -1,15 +1,12 @@
 from flask import Flask, jsonify, request
 from createTableOperation import createTable
-from addOperation import createUser
+from addOperation import createUser, addProduct
 from authUser import authenticate_user
 from readOperations import getAllUsers, getSpacificUser
 from updateOperation import update_approve_user, update_user_all_info
+from deleteOperation import deleteUser
 
 app = Flask(__name__)
-
-@app.route('/data', methods = ['GET'])
-def hello():
-    return jsonify({"Name" : "Rian", "Age" : 21, "Phone" : 8801756111949})
 
 @app.route("/createUser", methods = ["POST"])
 def create_user():
@@ -21,7 +18,7 @@ def create_user():
         pinCode = request.form["pinCode"]
         address = request.form["address"]
         response = createUser(name = name, password = password, phoneNumber  = phoneNumber, email= email, pinCode= pinCode, address= address)
-        return response
+        return jsonify({'status' : 200, 'message': response})
     except Exception as error:
         return jsonify({"message" : error, "status" : 400})
     
@@ -85,7 +82,28 @@ def update_all():
 
     except Exception as error:
         return jsonify({"message": error, "status" : 400})
+@app.route('/deleteUser', methods = ['DELETE'])
+def delete_User():
+    try:
+        userId = request.form['userId']
+        deleteUser(userId= userId)
+        return jsonify({'status': 200, 'message': 'User deleted successfully'})
+    except Exception as error:
+        return jsonify({"message": error, "status" : 400})
 
+    
+
+@app.route('/addProduct', methods = ['POST'])
+def add_Product():
+    try:
+        name = request.form['name']
+        price = request.form['price']
+        category = request.form['category']
+        stock = request.form['stock']
+        addProduct(name= name, price= price, category= category, stock= stock)
+        return jsonify({"status" : 200, 'message':'Product add successful'})
+    except Exception as error:
+        return jsonify({"message": error, "status" : 400})
 if __name__=="__main__":
     createTable()
     app.run(debug=True)

@@ -1,15 +1,12 @@
 from flask import Flask, jsonify, request
 from createTableOperation import createTable
-from addOperation import createUser
+from addOperation import createUser, addProduct
 from authUser import authenticate_user
 from readOperations import getAllUsers, getSpacificUser
 from updateOperation import update_approve_user, update_user_all_info
+from deleteOperation import deleteUser
 
 app = Flask(__name__)
-
-@app.route('/data', methods = ['GET'])
-def hello():
-    return jsonify({"Name" : "Rian", "Age" : 21, "Phone" : 8801756111949})
 
 @app.route("/createUser", methods = ["POST"])
 def create_user():
@@ -21,7 +18,7 @@ def create_user():
         pinCode = request.form["pinCode"]
         address = request.form["address"]
         response = createUser(name = name, password = password, phoneNumber  = phoneNumber, email= email, pinCode= pinCode, address= address)
-        return response
+        return jsonify({'status' : 200, 'message': response})
     except Exception as error:
         return jsonify({"message" : error, "status" : 400})
     
@@ -84,8 +81,6 @@ def update_all():
         return jsonify({"status" : 200, 'message':'Update successful'})
     except Exception as error:
         return jsonify({"message": error, "status" : 400})
-
-
 
 if __name__=="__main__":
     createTable()

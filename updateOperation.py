@@ -25,22 +25,22 @@ def update_user_all_info(updateList: dict, userId):
         #                     email VARCHAR(255),
         #                     phone_number VARCHAR(255),
         #                     pin_code VARCHAR(255)
-        # if key == "password":
-        #     cursor.execute("UPDATE Users SET password = ? WHERE user_id = ?", (value, userId))
-        # elif key == "isApproved":
-        #     cursor.execute("UPDATE Users SET isApproved = ? WHERE user_id = ?", (value, userId))
-        # elif key == "block":
-        #     cursor.execute("UPDATE Users SET block = ? WHERE user_id = ?", (value, userId))
-        # elif key == "name":
-        #     cursor.execute("UPDATE Users SET name = ? WHERE user_id = ?", (value, userId))
-        # elif key == "address":
-        #     cursor.execute("UPDATE Users SET address = ? WHERE user_id = ?", (value, userId))
-        # elif key == "email":
-        #     cursor.execute("UPDATE Users SET email = ? WHERE user_id = ?", (value, userId))
-        # elif key == "phone_number":
-        #     cursor.execute("UPDATE Users SET phone_number = ? WHERE user_id = ?", (value, userId))
-        # elif key == "pin_code":
-        #     cursor.execute("UPDATE Users SET pin_code = ? WHERE user_id = ?", (value, userId))
+        if key == "password":
+            cursor.execute("UPDATE Users SET password = ? WHERE user_id = ?", (value, userId))
+        elif key == "isApproved":
+            cursor.execute("UPDATE Users SET isApproved = ? WHERE user_id = ?", (value, userId))
+        elif key == "block":
+            cursor.execute("UPDATE Users SET block = ? WHERE user_id = ?", (value, userId))
+        elif key == "name":
+            cursor.execute("UPDATE Users SET name = ? WHERE user_id = ?", (value, userId))
+        elif key == "address":
+            cursor.execute("UPDATE Users SET address = ? WHERE user_id = ?", (value, userId))
+        elif key == "email":
+            cursor.execute("UPDATE Users SET email = ? WHERE user_id = ?", (value, userId))
+        elif key == "phone_number":
+            cursor.execute("UPDATE Users SET phone_number = ? WHERE user_id = ?", (value, userId))
+        elif key == "pin_code":
+            cursor.execute("UPDATE Users SET pin_code = ? WHERE user_id = ?", (value, userId))
         
     
 

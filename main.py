@@ -82,9 +82,10 @@ def update_all():
                 upadteUser[key] = value
         update_user_all_info(upadteUser, user_id)
         return jsonify({"status" : 200, 'message':'Update successful'})
-
     except Exception as error:
         return jsonify({"message": error, "status" : 400})
+
+
 
 if __name__=="__main__":
     createTable()

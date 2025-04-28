@@ -7,7 +7,7 @@ def getAllUsers():
     cursor.execute("SELECT * FROM Users")
 
     users = cursor.fetchall()
-    userJson = []
+    userlist = []
 
 # id INTEGER PRIMARY KEY AUTOINCREMENT,
 # user_id VARCHAR(255),
@@ -35,9 +35,9 @@ def getAllUsers():
             "phone_number": user[9],
             "pin_code": user[10]
         }
-        userJson.append(tempUser)
+        userlist.append(tempUser)
     conn.close()
-    return userJson
+    return userlist
 
 def getSpacificUser(userID):
     conn = sqlite3.connect("my_medicalShop.db")

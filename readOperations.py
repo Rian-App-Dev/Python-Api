@@ -8,19 +8,6 @@ def getAllUsers():
 
     users = cursor.fetchall()
     userlist = []
-
-# id INTEGER PRIMARY KEY AUTOINCREMENT,
-# user_id VARCHAR(255),
-# password VARCHAR(50),
-# date_of_account_creation DATE,
-# isApproved BOOLEAN,
-# block BOOLEAN,
-# name VARCHAR(255),
-# address VARCHAR(255),
-# email VARCHAR(255),
-# phone_number VARCHAR(255),
-# pin_code VARCHAR(255)
-
     for user in users:
         tempUser = {
             "id": user[0],
